@@ -21,7 +21,7 @@ export function makeAttachment(override: Partial<AttachmentProps> = {}, id?: Uni
 
 @Injectable()
 export class AttachmentFactory {
-	constructor(private prisma: PrismaService) {}
+	constructor(private prisma: PrismaService) { }
 
 	async makePrismaAttachment(data: Partial<AttachmentProps> = {}): Promise<Attachment> {
 		const attachment = makeAttachment(data)
