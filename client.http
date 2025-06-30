@@ -1,39 +1,43 @@
 @baseUrl = http://localhost:3333
-@request_id=""
+@authToken = {{authenticate.response.body.access_token}}
 
-# @name request_cloud_gatekeeper_access
-POST {{baseUrl}}/access-requests
+# @name create_account
+POST {{baseUrl}}/accounts
 Content-Type: application/json
 
 {
-  "requesterId":"6689e872-19f4-4669-89b3-15813a470f6f",
-  "message": "I need read access to the cloud-gatekeeper S3 bucket for data analysis and reporting purposes"
-}
-###
-
-# @name list_pending_requests
-GET {{baseUrl}}/access-requests/pending?viewerId=a460a902-2c89-4222-b792-c9b2ddc8d0aa
-Content-Type: application/json
-
-###
-
-# @name approve_access_request
-POST {{baseUrl}}/access-requests/f0833fcc-3e21-4419-859d-024211430798/approve
-Content-Type: application/json
-
-{
-  "approverId": "a460a902-2c89-4222-b792-c9b2ddc8d0aa",
-  "action": "APPROVE"
+  "name": "Diego Fernandes",
+  "email": "diego@rocketseat.com.br",
+  "password": "123456"
 }
 
 ###
 
-# @name reject_access_request
-POST {{baseUrl}}/access-requests/0deaf4aa-ef88-472d-ae5c-7d51d953c687/approve
+# @name authenticate
+POST {{baseUrl}}/sessions
 Content-Type: application/json
 
 {
-  "approverId": "1323ce6a-44a0-422a-a4ee-ecb331c36eaf",
-  "action": "REJECT",
-  "reason": "Access denied due to insufficient justification"
+  "email": "diego@rocketseat.com.br",
+  "password": "123456"
 }
+
+###
+
+# @name create_question
+POST {{baseUrl}}/questions
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Nova perguntdawa",
+  "content": "Teste",
+  "attachments":[]
+}
+
+###
+
+# @name fetch_recent_questions
+GET {{baseUrl}}/questions?page=1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}

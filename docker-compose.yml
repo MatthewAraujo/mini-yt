@@ -13,7 +13,6 @@ services:
       - ./data/pg:/data/postgres
     networks:
       - custom_net
-
 networks:
   custom_net:
     driver: bridge
