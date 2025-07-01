@@ -21,3 +21,17 @@ Content-Type: application/json
   "email": "diego@rocketseat.com.br",
   "password": "123456"
 }
+
+###
+
+# @name create_video
+POST {{baseUrl}}/videos
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Sample Video",
+  "description": "A test video",
+  "ownerId": "<PUT_USER_ID_HERE>",
+  "videoUrl": "http://example.com/video.mp4"
+}

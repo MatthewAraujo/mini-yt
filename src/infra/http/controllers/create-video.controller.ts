@@ -8,6 +8,7 @@ const createVideoBodySchema = z.object({
   description: z.string(),
   ownerId: z.string(),
   videoUrl: z.string().nullable().optional(),
+  attachmentId: z.string().uuid(),
 })
 
 type CreateVideoBodySchema = z.infer<typeof createVideoBodySchema>
@@ -20,13 +21,13 @@ export class CreateVideoController {
   @HttpCode(201)
   @UsePipes(new ZodValidationPipe(createVideoBodySchema))
   async handle(@Body() body: CreateVideoBodySchema) {
-    const { title, description, ownerId, videoUrl } = body
+    const { title, description, ownerId, videoUrl, attachmentId } = body
 
     const result = await this.createVideo.execute({
       title,
       description,
       ownerId,
-      videoUrl: videoUrl ?? null,
+      attachmentId
     })
 
     if (result.isLeft()) {

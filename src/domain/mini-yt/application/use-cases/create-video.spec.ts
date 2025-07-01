@@ -11,7 +11,7 @@ describe('CreateVideoUseCase', () => {
       title: 'Test Video',
       description: 'A test video',
       ownerId: 'user-1',
-      videoUrl: 'http://example.com/video.mp4',
+      attachmentId: 'UUID'
     })
 
     expect(result.isRight()).toBe(true)

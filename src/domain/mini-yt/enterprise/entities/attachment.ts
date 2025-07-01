@@ -16,7 +16,6 @@ export class Attachment extends Entity<AttachmentProps> {
 	get url() {
 		return this.props.url
 	}
-
 	get createdAt() {
 		return this.props.createdAt
 	}

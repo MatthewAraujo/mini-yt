@@ -10,9 +10,8 @@ export class PrismaVideosRepository implements VideosRepository {
 
   async findById(id: string): Promise<Video | null> {
     const video = await this.prisma.video.findUnique({
-      where: {
-        id,
-      },
+      where: { id },
+      include: { attachment: true },
     })
 
     if (!video) {

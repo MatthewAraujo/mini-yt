@@ -21,22 +21,33 @@ model User {
   password               String
   Video                  Video[]
   VideoProcessingRequest VideoProcessingRequest[]
+
+  @@map("users")
+}
+
+model Video {
+  id           String @id @default(uuid())
+  title        String
+  description  String
+  ownerId      String
+  videoUrl     String
+  attachmentId String @unique
+
+  attachment Attachment @relation(fields: [attachmentId], references: [id])
+  owner      User       @relation(fields: [ownerId], references: [id])
+
+  VideoProcessingRequest VideoProcessingRequest[]
+
+  @@map("videos")
 }
 
 model Attachment {
   id    String @id @default(uuid())
   title String
   url   String
-}
+  Video Video?
 
-model Video {
-  id                     String                   @id @default(uuid())
-  title                  String
-  description            String
-  ownerId                String
-  videoUrl               String
-  owner                  User                     @relation(fields: [ownerId], references: [id])
-  VideoProcessingRequest VideoProcessingRequest[]
+  @@map("attachments")
 }
 
 model VideoProcessingRequest {
@@ -60,4 +71,6 @@ model Event {
   id        String   @id @default(uuid())
   type      TYPE
   createdAt DateTime @default(now())
+
+  @@map("events")
 }

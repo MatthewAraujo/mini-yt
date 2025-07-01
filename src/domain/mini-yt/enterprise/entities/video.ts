@@ -6,7 +6,8 @@ export interface VideoProps {
   title: string
   description: string
   ownerId: string
-  videoUrl: string | null
+  videoUrl: string
+  attachmentId?: UniqueEntityID
   createdAt: Date
   updatedAt: Date
 }
@@ -28,12 +29,25 @@ export class Video extends Entity<VideoProps> {
     return this.props.videoUrl
   }
 
+  get attachmentId() {
+    return this.props.attachmentId
+  }
+
   get createdAt() {
     return this.props.createdAt
   }
 
   get updatedAt() {
     return this.props.updatedAt
+  }
+
+  set videoUrl(videoUrl: string) {
+    this.props.videoUrl = videoUrl
+    this.touch()
+  }
+
+  private touch() {
+    this.props.updatedAt = new Date()
   }
 
   static create(
