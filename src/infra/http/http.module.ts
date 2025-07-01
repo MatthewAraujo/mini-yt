@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common'
 
-import { AuthenticateUserUseCase } from '@/domain/forum/application/use-cases/authenticate-user'
+import { AuthenticateUserUseCase } from '@/domain/mini-yt/application/use-cases/authenticate-user'
 
-import { RegisterUserUseCase } from '@/domain/forum/application/use-cases/register-user'
-import { UploadAndCreateAttachmentUseCase } from '@/domain/forum/application/use-cases/upload-and-create-attachment'
-import { ReadNotificationUseCase } from '@/domain/notification/application/use-cases/read-notification'
+import { RegisterUserUseCase } from '@/domain/mini-yt/application/use-cases/register-user'
+import { UploadAndCreateAttachmentUseCase } from '@/domain/mini-yt/application/use-cases/upload-and-create-attachment'
 import { CryptographyModule } from '../cryptography/cryptography.module'
 import { DatabaseModule } from '../database/database.module'
 import { StorageModule } from '../storage/storage.module'
@@ -26,7 +25,6 @@ import { UploadAttachmentController } from './controllers/upload-attachment.cont
 		RegisterUserUseCase,
 		AuthenticateUserUseCase,
 		UploadAndCreateAttachmentUseCase,
-		ReadNotificationUseCase,
 	],
 })
 export class HttpModule { }

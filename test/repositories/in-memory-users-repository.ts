@@ -1,6 +1,6 @@
 import { DomainEvents } from '@/core/events/domain-events'
-import { UsersRepository } from '@/domain/forum/application/repositories/users-repository'
-import { User } from '@/domain/forum/enterprise/entities/user'
+import { UsersRepository } from '@/domain/mini-yt/application/repositories/users-repository'
+import { User } from '@/domain/mini-yt/enterprise/entities/user'
 
 export class InMemoryUsersRepository implements UsersRepository {
 	public items: User[] = []

@@ -1,5 +1,5 @@
-import { AuthenticateUserUseCase } from '@/domain/forum/application/use-cases/authenticate-user'
-import { WrongCredentialsError } from '@/domain/forum/application/use-cases/errors/wrong-credentials-error'
+import { AuthenticateUserUseCase } from '@/domain/mini-yt/application/use-cases/authenticate-user'
+import { WrongCredentialsError } from '@/domain/mini-yt/application/use-cases/errors/wrong-credentials-error'
 import { Public } from '@/infra/auth/public'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import {

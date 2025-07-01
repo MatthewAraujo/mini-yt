@@ -1,5 +1,5 @@
-import { InvalidAttachmentTypeError } from '@/domain/forum/application/use-cases/errors/invalid-attachment-type-error'
-import { UploadAndCreateAttachmentUseCase } from '@/domain/forum/application/use-cases/upload-and-create-attachment'
+import { InvalidAttachmentTypeError } from '@/domain/mini-yt/application/use-cases/errors/invalid-attachment-type-error'
+import { UploadAndCreateAttachmentUseCase } from '@/domain/mini-yt/application/use-cases/upload-and-create-attachment'
 import {
 	BadRequestException,
 	Controller,
@@ -14,7 +14,7 @@ import { FileInterceptor } from '@nestjs/platform-express'
 
 @Controller('/attachments')
 export class UploadAttachmentController {
-	constructor(private uploadAndCreateAttachment: UploadAndCreateAttachmentUseCase) {}
+	constructor(private uploadAndCreateAttachment: UploadAndCreateAttachmentUseCase) { }
 
 	@Post()
 	@UseInterceptors(FileInterceptor('file'))

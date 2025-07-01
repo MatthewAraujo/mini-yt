@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
 
-import { Encrypter } from '@/domain/forum/application/cryptography/encrypter'
-import { HashComparer } from '@/domain/forum/application/cryptography/hash-comparer'
-import { HashGenerator } from '@/domain/forum/application/cryptography/hash-generator'
+import { Encrypter } from '@/domain/mini-yt/application/cryptography/encrypter'
+import { HashComparer } from '@/domain/mini-yt/application/cryptography/hash-comparer'
+import { HashGenerator } from '@/domain/mini-yt/application/cryptography/hash-generator'
 
 import { BcryptHasher } from './bcrypt-hasher'
 import { JwtEncrypter } from './jwt-encrypter'
@@ -15,4 +15,4 @@ import { JwtEncrypter } from './jwt-encrypter'
 	],
 	exports: [Encrypter, HashComparer, HashGenerator],
 })
-export class CryptographyModule {}
+export class CryptographyModule { }

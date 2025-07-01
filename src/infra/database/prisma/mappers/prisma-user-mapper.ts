@@ -1,5 +1,5 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { User } from '@/domain/forum/enterprise/entities/user'
+import { User } from '@/domain/mini-yt/enterprise/entities/user'
 import { Prisma, User as PrismaUser } from 'generated/prisma'
 
 export class PrismaUserMapper {

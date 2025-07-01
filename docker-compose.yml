@@ -13,6 +13,20 @@ services:
       - ./data/pg:/data/postgres
     networks:
       - custom_net
+
+  cache:
+      container_name: mini-yt-cache
+      image: redis
+
+      ports:
+        - 6379:6379
+      volumes:
+        - ./data/redis:/data
+
+      networks:
+        - custom_net
+
+    
 networks:
   custom_net:
     driver: bridge

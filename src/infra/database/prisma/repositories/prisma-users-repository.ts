@@ -1,5 +1,5 @@
-import { UsersRepository } from '@/domain/forum/application/repositories/users-repository'
-import { User } from '@/domain/forum/enterprise/entities/user'
+import { UsersRepository } from '@/domain/mini-yt/application/repositories/users-repository'
+import { User } from '@/domain/mini-yt/enterprise/entities/user'
 import { Injectable } from '@nestjs/common'
 import { PrismaUserMapper } from '../mappers/prisma-user-mapper'
 import { PrismaService } from '../prisma.service'

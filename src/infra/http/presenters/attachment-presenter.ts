@@ -1,4 +1,4 @@
-import { Attachment } from '@/domain/forum/enterprise/entities/attachment'
+import { Attachment } from '@/domain/mini-yt/enterprise/entities/attachment'
 
 export class AttachmentPresenter {
 	static toHTTP(attachment: Attachment) {

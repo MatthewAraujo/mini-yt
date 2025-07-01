@@ -1,4 +1,4 @@
-import { UploadParams, Uploader } from '@/domain/forum/application/storage/uploader'
+import { UploadParams, Uploader } from '@/domain/mini-yt/application/storage/uploader'
 
 import { randomUUID } from 'node:crypto'
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
