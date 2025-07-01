@@ -8,6 +8,20 @@ import { PrismaService } from '../prisma.service'
 export class PrismaVideosRepository implements VideosRepository {
   constructor(private prisma: PrismaService) { }
 
+  async findById(id: string): Promise<Video | null> {
+    const video = await this.prisma.video.findUnique({
+      where: {
+        id,
+      },
+    })
+
+    if (!video) {
+      return null
+    }
+
+    return PrismaVideoMapper.toDomain(video)
+  }
+
   async create(video: Video): Promise<void> {
     const data = PrismaVideoMapper.toPrisma(video)
 

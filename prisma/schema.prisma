@@ -51,3 +51,13 @@ model VideoProcessingRequest {
   video Video @relation(fields: [videoId], references: [id])
   owner User  @relation(fields: [ownerId], references: [id])
 }
+
+enum TYPE {
+  VIDEO_PROCCESSING
+}
+
+model Event {
+  id        String   @id @default(uuid())
+  type      TYPE
+  createdAt DateTime @default(now())
+}

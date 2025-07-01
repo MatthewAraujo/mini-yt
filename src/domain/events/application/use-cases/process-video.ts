@@ -20,8 +20,6 @@ export class ProcessVideoUseCase {
     videoId,
     ownerId,
   }: ProcessVideoUseCaseRequest): Promise<ProcessVideoUseCaseResponse> {
-
-
     return right({
       status: 'processing',
       videoId,

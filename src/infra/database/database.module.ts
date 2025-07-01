@@ -1,6 +1,5 @@
 
 import { UsersRepository } from '@/domain/mini-yt/application/repositories/users-repository'
-import { NotificationsRepository } from '@/domain/events/application/repositories/notifications-repository'
 import { Module } from '@nestjs/common'
 import { CacheModule } from '../cache/cache.module'
 import { PrismaService } from './prisma/prisma.service'
@@ -10,6 +9,8 @@ import { PrismaUsersRepository } from './prisma/repositories/prisma-users-reposi
 import { AttachmentsRepository } from '@/domain/mini-yt/application/repositories/attachments-repository'
 import { VideosRepository } from '@/domain/mini-yt/application/repositories/videos-repository'
 import { PrismaVideosRepository } from './prisma/repositories/prisma-video-repository'
+import { EventsRepository } from '@/domain/events/application/repositories/events-repository'
+import { PrismaEventsRepository } from './prisma/repositories/prisma-events.repository'
 
 @Module({
 	imports: [CacheModule],
@@ -27,13 +28,16 @@ import { PrismaVideosRepository } from './prisma/repositories/prisma-video-repos
 			provide: VideosRepository,
 			useClass: PrismaVideosRepository,
 		},
+		{
+			provide: EventsRepository,
+			useClass: PrismaEventsRepository,
+		},
 	],
 	exports: [
 		PrismaService,
 		UsersRepository,
 		AttachmentsRepository,
 		VideosRepository,
-		// NotificationsRepository,
 	],
 })
 export class DatabaseModule { }
