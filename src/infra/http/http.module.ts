@@ -11,6 +11,8 @@ import { AuthenticateController } from './controllers/authenticate.controller'
 
 import { CreateAccountController } from './controllers/create-account.controller'
 import { UploadAttachmentController } from './controllers/upload-attachment.controller'
+import { CreateVideoController } from './controllers/create-video.controller'
+import { CreateVideoUseCase } from '@/domain/mini-yt/application/use-cases/create-video'
 
 @Module({
 	imports: [DatabaseModule, CryptographyModule, StorageModule],
@@ -19,12 +21,14 @@ import { UploadAttachmentController } from './controllers/upload-attachment.cont
 		AuthenticateController,
 
 		UploadAttachmentController,
+		CreateVideoController,
 	],
 	providers: [
 
 		RegisterUserUseCase,
 		AuthenticateUserUseCase,
 		UploadAndCreateAttachmentUseCase,
+		CreateVideoUseCase,
 	],
 })
 export class HttpModule { }

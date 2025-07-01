@@ -4,32 +4,31 @@ import { INestApplication } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
-import { QuestionFactory } from 'test/factories/make-question'
-import { StudentFactory } from 'test/factories/make-student'
+import { UserFactory } from 'test/factories/make-user'
 
 describe('Upload attachment (E2E)', () => {
 	let app: INestApplication
-	let studentFactory: StudentFactory
+	let userFactory: UserFactory
 	let jwt: JwtService
 
 	beforeAll(async () => {
 		const moduleRef = await Test.createTestingModule({
 			imports: [AppModule, DatabaseModule],
-			providers: [StudentFactory, QuestionFactory],
+			providers: [UserFactory],
 		}).compile()
 
 		app = moduleRef.createNestApplication()
 
-		studentFactory = moduleRef.get(StudentFactory)
+		userFactory = moduleRef.get(UserFactory)
 		jwt = moduleRef.get(JwtService)
 
 		await app.init()
 	})
 
 	test('[POST] /attachments', async () => {
-		const user = await studentFactory.makePrismaStudent()
+		const video = await userFactory.makePrismaUser()
 
-		const accessToken = jwt.sign({ sub: user.id.toString() })
+		const accessToken = jwt.sign({ sub: video.id.toString() })
 
 		const response = await request(app.getHttpServer())
 			.post('/attachments')

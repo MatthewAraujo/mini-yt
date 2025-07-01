@@ -8,6 +8,8 @@ import { PrismaService } from './prisma/prisma.service'
 import { PrismaAttachmentsRepository } from './prisma/repositories/prisma-attachments-repository'
 import { PrismaUsersRepository } from './prisma/repositories/prisma-users-repository'
 import { AttachmentsRepository } from '@/domain/mini-yt/application/repositories/attachments-repository'
+import { VideosRepository } from '@/domain/mini-yt/application/repositories/videos-repository'
+import { PrismaVideosRepository } from './prisma/repositories/prisma-video-repository'
 
 @Module({
 	imports: [CacheModule],
@@ -21,11 +23,16 @@ import { AttachmentsRepository } from '@/domain/mini-yt/application/repositories
 			provide: AttachmentsRepository,
 			useClass: PrismaAttachmentsRepository,
 		},
+		{
+			provide: VideosRepository,
+			useClass: PrismaVideosRepository,
+		},
 	],
 	exports: [
 		PrismaService,
 		UsersRepository,
 		AttachmentsRepository,
+		VideosRepository,
 		// NotificationsRepository,
 	],
 })
