@@ -1,6 +1,6 @@
 
 import { UsersRepository } from '@/domain/mini-yt/application/repositories/users-repository'
-import { NotificationsRepository } from '@/domain/notification/application/repositories/notifications-repository'
+import { NotificationsRepository } from '@/domain/events/application/repositories/notifications-repository'
 import { Module } from '@nestjs/common'
 import { CacheModule } from '../cache/cache.module'
 import { PrismaService } from './prisma/prisma.service'

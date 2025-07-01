@@ -15,11 +15,12 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(uuid())
-  name     String
-  email    String  @unique
-  password String
-  Video    Video[]
+  id                     String                   @id @default(uuid())
+  name                   String
+  email                  String                   @unique
+  password               String
+  Video                  Video[]
+  VideoProcessingRequest VideoProcessingRequest[]
 }
 
 model Attachment {
@@ -29,10 +30,24 @@ model Attachment {
 }
 
 model Video {
-  id          String @id @default(uuid())
-  title       String
-  description String
+  id                     String                   @id @default(uuid())
+  title                  String
+  description            String
+  ownerId                String
+  videoUrl               String
+  owner                  User                     @relation(fields: [ownerId], references: [id])
+  VideoProcessingRequest VideoProcessingRequest[]
+}
+
+model VideoProcessingRequest {
+  id          String    @id @default(uuid())
+  videoId     String
   ownerId     String
-  videoUrl    String
-  owner       User   @relation(fields: [ownerId], references: [id])
+  status      String
+  requestedAt DateTime  @default(now())
+  processedAt DateTime?
+  error       String?
+
+  video Video @relation(fields: [videoId], references: [id])
+  owner User  @relation(fields: [ownerId], references: [id])
 }

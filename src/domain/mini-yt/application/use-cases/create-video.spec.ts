@@ -1,12 +1,6 @@
 import { CreateVideoUseCase } from '@/domain/mini-yt/application/use-cases/create-video'
-import { Video } from '@/domain/mini-yt/enterprise/entities/video'
+import { InMemoryVideosRepository } from 'test/repositories/in-memory-video-repository'
 
-class InMemoryVideosRepository {
-  public items: Video[] = []
-  async create(video: Video) {
-    this.items.push(video)
-  }
-}
 
 describe('CreateVideoUseCase', () => {
   it('should create a video', async () => {
